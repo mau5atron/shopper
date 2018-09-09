@@ -13,7 +13,7 @@ class ShoppingCart
 	def order
 		# if @order instance has been assigned in the past, it will return that instance
 		# otherwise a new order token instance will be created
-		@order ||= Order.find_or_create_by(token: @token) do |order|
+		@order ||= Order.find_or_create_by(token: @token, status: 'cart') do |order|
 			order.sub_total = 0
 		end
 	end
